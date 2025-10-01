@@ -48,11 +48,11 @@ Which Wikipedia articles are structurally “important” in the graph of relate
 - Results reflect structural importance only — not necessarily topical importance.  
 
 ### 📂 Repo Structure
-├── web_graph_analysis.ipynb # Main notebook
-├── README.md # Project documentation
-├── requirements.txt # Python dependencies
-├── figs/ # Output plots
-└── tables/ # Output CSV summaries 
+- **web_graph_analysis.ipynb** – Main notebook  
+- **README.md** – Project documentation  
+- **requirements.txt** – Python dependencies  
+- **figs/** – Output plots  
+- **tables/** – Output CSV summaries  
 
 ### ▶️ How to Run
 # Install dependencies
