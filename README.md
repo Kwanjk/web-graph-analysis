@@ -1,25 +1,65 @@
-# Web Graph Analysis — Important Nodes (Wikipedia Demo)
+# Web Graph Analysis — Wikipedia Crawl
 
-This project builds a small directed graph of Wikipedia internal links and identifies important nodes via **in-degree**, **PageRank**, and **betweenness**.
+### 📌 Goal  
+Explore the structure of a web-based network by crawling Wikipedia articles and building a directed graph. The project identifies **important nodes** using multiple centrality measures.
 
-## How to Run
-1. Create/activate a Python environment.
-2. `pip install -r requirements.txt`
-3. Open `web_graph_analysis.ipynb` in Jupyter and run all cells.
-4. Figures will be saved as PNG; tables saved as CSV.
+### 🧑‍🤝‍🧑 Stakeholder  
+- Researchers & educators interested in **network science**.  
+- Digital librarians and platform engineers who want to **understand which pages/articles are most influential** in knowledge graphs.  
 
-## Stakeholder & Decisions
-- Search/ranking engineers and community moderators.
-- Use hubs (in-degree), authorities (PageRank), and bridges (betweenness) to inform ranking and monitoring.
+### ❓ Question  
+Which Wikipedia articles are structurally “important” in the graph of related topics (Data Science, Machine Learning, Artificial Intelligence)?  
 
-## Data
-- Pages are crawled from Wikipedia starting from seeds (Data_science, Machine_learning, Artificial_intelligence).
-- Nodes = pages; edges = directed hyperlinks.
+### ⚙️ Methods
+- Crawled ~120 Wikipedia articles using `requests` + `BeautifulSoup`.  
+- Built a **directed graph** (`DiGraph`) in NetworkX where:  
+  - **Nodes** = Wikipedia articles.  
+  - **Edges** = hyperlinks from one article to another.  
+- Analyzed importance using:  
+  - **In-degree centrality** (popularity by incoming links).  
+  - **PageRank** (Google’s algorithm for influence).  
+  - **Betweenness centrality** (bridges between clusters).  
 
-## Validation
-- PageRank sum ≈ 1
-- No negative centralities
-- Non-empty graph assertions
+### 📊 Results (Top Nodes)
+- **By In-Degree**: `Main_Page`, `Machine_learning`, `Data_mining`  
+- **By PageRank**: `Main_Page`, `Machine_learning`, `Regression_analysis`  
+- **By Betweenness**: `Data_mining`, `Cluster_analysis`, `Regression_analysis`  
 
-## License
-For educational use. Respect website terms and robots policies; keep crawl tiny.
+### 📷 Figures  
+- `fig_indegree_distribution.png`  
+- `fig_top_in_degree.png`  
+- `fig_top_pagerank.png`  
+- `fig_top_betweenness.png`  
+
+### 📑 Tables  
+- `table_summary_top25.csv` → overview of top nodes across metrics.  
+- `table_top_in_degree.csv`  
+- `table_top_pagerank.csv`  
+- `table_top_betweenness.csv`  
+
+### ✅ Validation
+- Sanity checked crawl: skipped non-article namespaces (`Category:`, `Help:`, etc.).  
+- Removed duplicate links.  
+- Verified NetworkX metrics against small test graphs from class exercises.  
+
+### ⚠️ Limitations
+- Crawl capped at **120 pages** → not the full Wikipedia.  
+- Bias toward **seed pages** (Data Science, Machine Learning, AI).  
+- Results reflect structural importance only — not necessarily topical importance.  
+
+### 📂 Repo Structure
+├── web_graph_analysis.ipynb # Main notebook
+├── README.md # Project documentation
+├── requirements.txt # Python dependencies
+├── figs/ # Output plots
+└── tables/ # Output CSV summaries 
+
+### ▶️ How to Run
+# Install dependencies
+pip install -r requirements.txt
+
+# Run in Jupyter Notebook
+jupyter notebook web_graph_analysis.ipynb
+
+# OR run in Jupyter Lab
+jupyter lab web_graph_analysis.ipynb
